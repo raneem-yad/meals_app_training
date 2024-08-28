@@ -5,9 +5,10 @@ import 'package:meal_prep_training/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+  const MealItem({super.key, required this.meal , required this.onSelectMeal});
 
   final Meal meal;
+  final Function onSelectMeal;
 
   String capitalize(String s) {
     if (s.isEmpty) return s;
@@ -21,14 +22,16 @@ class MealItem extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       clipBehavior: Clip.hardEdge,
       child: InkWell(
-        onTap: () {},
+        onTap: (){
+          onSelectMeal(context, meal);
+        },
         child: Stack(
           children: [
             //   image
             FadeInImage(
-                placeholder: MemoryImage(kTransparentImage),
-                image: NetworkImage(meal.imageUrl),
-                fit: BoxFit.cover,
+              placeholder: MemoryImage(kTransparentImage),
+              image: NetworkImage(meal.imageUrl),
+              fit: BoxFit.cover,
               height: 200,
               width: double.infinity,
             ),
