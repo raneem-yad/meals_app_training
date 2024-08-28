@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:meal_prep_training/models/meal.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class MealsDetailsScreen extends StatelessWidget {
   const MealsDetailsScreen({super.key, required this.meal});
@@ -36,7 +35,7 @@ class MealsDetailsScreen extends StatelessWidget {
                 Text(
                   ingredient,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onBackground,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
               const SizedBox(height: 24),
@@ -58,7 +57,7 @@ class MealsDetailsScreen extends StatelessWidget {
                     step,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                 ),
