@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:meal_prep_training/data/dummy_data.dart';
+import 'package:meal_prep_training/models/meal.dart';
 import 'package:meal_prep_training/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen({super.key, required this.onToggleFav});
+
+  final void Function(Meal meal) onToggleFav;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class CategoriesScreen extends StatelessWidget {
         childAspectRatio: 3 / 2,
       ),
       children: availableCategories
-          .map((item) => CategoryGridItem(category: item))
+          .map((item) => CategoryGridItem(category: item, onToggleFav: onToggleFav,))
           .toList(),
     );
   }
