@@ -23,12 +23,23 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
+  void _showInfoMessage(String message){
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  }
+
   void _toggleMealFavouriteStatus(Meal meal){
     final isMealExist = _favMeals.contains(meal);
     if(isMealExist){
-      _favMeals.remove(meal);
+      setState(() {
+        _favMeals.remove(meal);
+      });
+      _showInfoMessage("Meal is no longer are Favorite!");
     }else{
-      _favMeals.add(meal);
+      setState(() {
+        _favMeals.add(meal);
+      });
+      _showInfoMessage("Meal was added to Favorite");
     }
   }
 
